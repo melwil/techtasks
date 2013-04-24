@@ -1,0 +1,29 @@
+<script type="text/javascript" src="/canvasjs.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+          var chart = new CanvasJS.Chart("chartContainer", {
+              theme: "theme1",//theme1
+              title:{
+                  text: "20 most common words in {{ filename }}"              
+             },
+              data: [              
+              {
+   /*** Change type "column" to "bar", "area", "line" or "pie"***/
+                  type: "bar",
+                  dataPoints: [
+            %for value, key in data:
+                  { label: "{{ key }}", y: {{ value }} },
+            %end
+                  ]
+              }
+              ]
+          });
+
+          chart.render();
+      } 
+</script>
+
+<h2>File analysis</h2>
+
+<div id="chartContainer" style="height: 300px; width: 500px;">
+</div>
