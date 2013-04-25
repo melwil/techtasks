@@ -61,4 +61,4 @@ def javascripts(filename):
 def javascripts(filename):
     return static_file(filename, root='css')
 
-run(host='10.211.55.3', port=8080)
+run(host='localhost', port=8080)
