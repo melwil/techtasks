@@ -54,7 +54,7 @@ def analyze(filename):
     for value, key in data[-20:]:
         finaldata.insert(0, {"label": key, "y": value})
 
-    return dict(filename=filename, data=data[-5:])
+    return dict(filename=filename, data=data[-20:])
 
 @get('/<filename:re:.*\.js>')
 def javascripts(filename):
