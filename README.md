@@ -53,7 +53,7 @@ def fib(a):
 print fib(10)
 ```
 
-3a) Print out the 100th Fibonacci number. Make sure this completes in less than a minute.
+### 3a) Print out the 100th Fibonacci number. Make sure this completes in less than a minute.
 
 To find the 100th fibonacci number, plain recursion is a bad solution, since the amount of recursive calls escalates exponentially with the amount of fibonacci numbers it needs to calculate. We can fix this issue by simply adding the memoize decorator created in task 2.
 
@@ -68,11 +68,11 @@ def fib(a):
 print fib(100)
 ```
 
-3b) Print out the 1200th Fibonacci number. Make sure this completes in less than a minute.
+### 3b) Print out the 1200th Fibonacci number. Make sure this completes in less than a minute.
 
 The 1200th fibonacci number requires too many recursive steps and overflows the recursion depth that python allows. In order to calculate this number, I will just calculate the number iteratively.
 
-Assuming python 2.x for this one, as xrange doesn't exist in Python 3, but xrange will consume less memory on larger ranges, and have no need of the actual list of numbers when only iterating.
+Assuming python 2.x for this one, as xrange doesn't exist in Python 3, but xrange will consume less memory on larger ranges, and I have no need of the actual list of numbers when only iterating. 'i' could be used to construct a list or dict of the values as we go.
 
 ```python
 def fib(a):
@@ -90,8 +90,12 @@ print fib(1200)
 As a thought following these tasks on fibonacci, using a combination of iterative calculation and storing previously calculated numbers would be most efficient if we needed to calculate many different terms of fibonacci numbers in sequence.
 
 
-4) Create a simple web application which allows you to upload a text file. The uploaded file(s) can be selected and upon selection a an analysis will be performed. A list of the top 20 words that occur the most in the text will be generated. Present this list as a Bar Graph rendered by the browser, to avoid rendering graphs on the server-side. Make sure that a large number of users can efficiently fetch the results.
+### 4) Create a simple web application which allows you to upload a text file. The uploaded file(s) can be selected and upon selection a an analysis will be performed. A list of the top 20 words that occur the most in the text will be generated. Present this list as a Bar Graph rendered by the browser, to avoid rendering graphs on the server-side. Make sure that a large number of users can efficiently fetch the results.
 
+I built the webapp using Bottle, CanvasJS and jQuery with the jQCloud plugin. I could have included bootstrap to provide better styling, but function above design for the simplicity.
 
+The code for the webapp can be found in the webapp folder. All dependencies are included, just need to run app.py.
 
-4a) We also challenge you to come up with other ways than bar-charts to present the data. While not required, can you come up with another interesting to analyze the data than "top 20 words" as well?
+### 4a) We also challenge you to come up with other ways than bar-charts to present the data. While not required, can you come up with another interesting to analyze the data than "top 20 words" as well?
+
+I've included code to produce a tag cloud focused around the top 20 words. The tag cloud uses the same data as the graph and renders with javascript.
