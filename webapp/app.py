@@ -58,6 +58,10 @@ def analyze(filename):
 
 @get('/<filename:re:.*\.js>')
 def javascripts(filename):
-    return static_file(filename, root='')
+    return static_file(filename, root='js')
+
+@get('/<filename:re:.*\.css>')
+def javascripts(filename):
+    return static_file(filename, root='css')
 
 run(host='10.211.55.3', port=8080)
