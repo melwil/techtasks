@@ -50,9 +50,6 @@ def analyze(filename):
     for key, value in words.items():
         data.append((value, key,))
     data.sort()
-    finaldata = []
-    for value, key in data[-20:]:
-        finaldata.insert(0, {"label": key, "y": value})
 
     return dict(filename=filename, data=data[-20:])
 
