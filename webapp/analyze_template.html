@@ -1,45 +1,51 @@
-<link rel="stylesheet" href="/jqcloud.css">
-<script type="text/javascript" src="/jquery-2.0.0.min.js"></script>
-<script type="text/javascript" src="/canvasjs.js"></script>
-<script type="text/javascript" src="/jqcloud-1.0.3.min.js"></script>
-<script type="text/javascript">
-    // CanvasJS code for bar graph. 
-    window.onload = function () {
-        var chart = new CanvasJS.Chart("chartContainer", {
-            theme: "theme1",//theme1
-            title:{
-                text: "20 most common words in {{ filename }}"              
-            },
-            data: [              
-                {
-                    type: "bar",
-                    dataPoints: [
-                %for value, key in data:
-                        { label: "{{ key }}", y: {{ value }} },
-                %end
+<html>
+    <head>
+        <title>Analysis of {{ filename }}</title>
+        
+        <link rel="stylesheet" href="/jqcloud.css">
+        <script type="text/javascript" src="/jquery-2.0.0.min.js"></script>
+        <script type="text/javascript" src="/canvasjs.js"></script>
+        <script type="text/javascript" src="/jqcloud-1.0.3.min.js"></script>
+        <script type="text/javascript">
+            // CanvasJS code for bar graph. 
+            window.onload = function () {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    theme: "theme1",//theme1
+                    title:{
+                        text: "20 most common words in {{ filename }}"              
+                    },
+                    data: [              
+                        {
+                            type: "bar",
+                            dataPoints: [
+                        %for value, key in data:
+                                { label: "{{ key }}", y: {{ value }} },
+                        %end
+                            ]
+                        }
                     ]
-                }
-            ]
-        });
+                });
 
-        chart.render();
-    } 
+                chart.render();
+            } 
 
-    // jqcloud code
-    var word_list = [
-%for value, key in data:
-    {text: "{{ key }}", weight: {{ value }}},
-%end
-    ];
-    $(document).ready(function() {
-        $("#wordcloud").jQCloud(word_list);
-    });
-</script>
+            // jqcloud code
+            var word_list = [
+        %for value, key in data:
+            {text: "{{ key }}", weight: {{ value }}},
+        %end
+            ];
+            $(document).ready(function() {
+                $("#wordcloud").jQCloud(word_list);
+            });
+        </script>
+    </head>
+    <body>
+        <h2>File analysis</h2>
 
-<h2>File analysis</h2>
+        <div id="chartContainer" style="height: 300px; width: 500px;">
+        </div>
 
-<div id="chartContainer" style="height: 300px; width: 500px;">
-</div>
-
-<div id="wordcloud" style="width: 550px; height: 350px; position: relative;"></div>
-
+        <div id="wordcloud" style="width: 550px; height: 350px; position: relative;"></div>
+    </body>
+</html>

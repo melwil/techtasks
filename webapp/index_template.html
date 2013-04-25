@@ -1,14 +1,21 @@
-<h2>File analyzer</h2>
+<html>
+    <head>
+        <title>File analyzer</title>
+    </head>
+    <body>
+        <h2>File analyzer</h2>
 
-%if files:
-    <ul>
-    %for file in files:
-        <li><a href="/analyze/{{ file }}">{{ file }}</a></li>
-    %end
-    </ul>
-%end
+        %if files:
+            <ul>
+            %for file in files:
+                <li><a href="/analyze/{{ file }}">{{ file }}</a></li>
+            %end
+            </ul>
+        %end
 
-<form action="/upload" method="post" enctype="multipart/form-data">
-    Select a file: <input type="file" name="upload" />
-    <input type="submit" value="Start upload" />
-</form>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            Select a file: <input type="file" name="upload" />
+            <input type="submit" value="Start upload" />
+        </form>
+    </body>
+</html>
