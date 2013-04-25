@@ -21,8 +21,20 @@ def upload():
         return 'Error: %s<br /><br /><a href="/">Go back</a>' % e
     redirect('/')
 
+def memoize(function):
+    memo = {}
+    def cache(filename):
+        if filename in memo:
+            return memo[filename]
+        else:
+            tupleList = function(filename)
+            memo[filename] = tupleList
+            return tupleList
+    return cache
+
 @route('/analyze/:filename')
 @view('analyze_template')
+@memoize
 def analyze(filename):
     words = {}
     f = open('uploads/%s' % filename, 'r')
